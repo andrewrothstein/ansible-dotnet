@@ -1,7 +1,7 @@
 ---
 dotnet_deps:
-  - libunwind8
-  - liblttng-ust
+  - libunwind
+  - lttng-ust
   - libcurl
   - openssl-libs
   - libuuid
