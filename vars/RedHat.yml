@@ -1,0 +1,10 @@
+---
+dotnet_deps:
+  - libunwind8
+  - liblttng-ust
+  - libcurl
+  - openssl-libs
+  - libuuid
+  - krb5-libs
+  - libicu
+  - zlib

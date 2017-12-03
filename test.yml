@@ -1,0 +1,7 @@
+---
+- hosts: all
+  roles:
+    - role: '{{playbook_dir}}'
+  tasks:
+    - name: ensure executable is executable
+      command: /usr/local/bin/dotnet --version
