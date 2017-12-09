@@ -57,8 +57,6 @@
   become_user: root
   file:
     src: '{{dotnet_install_dir}}/dotnet'
-    dest: '{{dotnet_install_link}}'
+    dest: '{{dotnet_install_parent_dir}}/bin/dotnet'
     state: link
-- name: build solution...
-  when: dotnet_install_type == "sdk"
-  include_tasks: build-solution.yml
+

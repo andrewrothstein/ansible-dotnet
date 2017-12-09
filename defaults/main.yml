@@ -19,9 +19,3 @@ dotnet_apps:
       checksum: sha256:6059a6f72fb7aa6205ef4b52583e9c041fd128e768870a0fc4a33ed84c98ca6b
 
 dotnet_install_parent_dir: /usr/local
-
-# The solution directory for when using the sdk to build a project
-dotnet_solution:
-  dir: test/HelloWorld
-  name: HelloWorld
-  privilege_escalate: False

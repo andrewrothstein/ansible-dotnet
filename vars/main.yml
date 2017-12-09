@@ -6,7 +6,4 @@ dotnet_install_dir: '{{dotnet_install_parent_dir}}/dotnet/{{dotnet_install_type}
 dotnet_tgz_subdir: '{{dotnet_apps[dotnet_ver][dotnet_install_type]["subdir"]}}'
 dotnet_tgz_url: '{{dotnet_mirror}}/{{dotnet_tgz_subdir}}/{{dotnet_tgz}}'
 
-dotnet_install_bin_dir: '{{dotnet_install_parent_dir}}/bin'
-dotnet_install_link: '{{dotnet_install_bin_dir}}/dotnet'
-
 dotnet_checksum: '{{dotnet_apps[dotnet_ver][dotnet_install_type]["checksum"]}}'

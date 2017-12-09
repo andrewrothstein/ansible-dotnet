@@ -2,11 +2,6 @@
 - hosts: all
   roles:
     - role: '{{playbook_dir}}'
-      dotnet_install_type: sdk
-      dotnet_solution:
-        ver: v1.0.0
-        dir: test/HelloWorld
-        name: HelloWorld
   tasks:
-    - name: ensure application HelloWorld runs
-      command: '{{dotnet_install_bin_dir}}/HelloWorld'
+    - name: ensure executable is executable
+      command: /usr/local/bin/dotnet --version
