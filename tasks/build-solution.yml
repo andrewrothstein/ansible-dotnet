@@ -1,0 +1,27 @@
+---
+- name: create versioned install directory for solution
+  become: '{{dotnet_solution.privilege_escalate|default(True)}}'
+  become_user: root
+  file:
+    path: '{{dotnet_install_bin_dir}}/{{dotnet_solution.name}}-{{dotnet_solution.ver}}'
+    state: directory
+    mode: 0755
+- name: building solution...
+  become: '{{dotnet_solution.privilege_escalate|default(True)}}'
+  become_user: root
+  args:
+    chdir: '{{dotnet_solution.dir}}'
+  command: >-
+    {{dotnet_install_link}}
+    build
+    -c {{dotnet_solution.configuration|default("Release")}}
+    -o {{dotnet_install_bin_dir}}/{{dotnet_solution.name}}-{{dotnet_solution.ver}}
+    {{dotnet_solution.name}}.sln
+
+- name: install versioned shell entry point
+  become: yes
+  become_user: root
+  template:
+    src: entry.sh.j2
+    dest: '{{dotnet_install_bin_dir}}/{{dotnet_solution.name}}'
+    mode: 0755
