@@ -4,7 +4,7 @@ dotnet_mirror: https://download.microsoft.com/download
 
 dotnet_ver: '2.0.0'
 dotnet_platform: linux-x64
-dotnet_install_type: sdk
+dotnet_install_type: runtime
 
 dotnet_apps:
   '2.0.0':
