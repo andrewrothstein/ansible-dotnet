@@ -44,6 +44,7 @@
       unarchive:
         src: /tmp/{{dotnet_tgz}}
         dest: '{{dotnet_install_dir}}'
+        remote_src: yes
         creates: '{{dotnet_install_dir}}/dotnet'
   always:
     - name: delete tgz...
