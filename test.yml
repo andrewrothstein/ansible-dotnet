@@ -20,15 +20,16 @@
 - hosts: all
   roles:
     - role: '{{playbook_dir}}'
-      dotnet_install_type: runtime
-      dotnet_ver: '2.0.0'
+      dotnet_install_type: sdk
+      dotnet_ver: '2.1.200'
       dotnet_subdirs:
-        '2.0.0': '1/B/4/1B4DE605-8378-47A5-B01B-2C79D6C55519'
+        # https://download.microsoft.com/download/3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7/dotnet-sdk-2.1.200-linux-x64.tar.gz
+        '2.1.200': '3/7/1/37189942-C91D-46E9-907B-CF2B2DE584C7'
       dotnet_checksums:
-        # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.0.0-sdk-sha.txt
-        '2.0.0':
-          linux-x64: sha256:6059a6f72fb7aa6205ef4b52583e9c041fd128e768870a0fc4a33ed84c98ca6b
-          osx-64: sha256:6e87270e72b5a02ea4e3c4b2266d079366e0e55d6892f9dad5f64dee3f8a341b
+        # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.1.200-sdk-sha.txt
+        '2.1.200':
+          linux-x64: sha512:d8f6035a591b5500a8b81188d834ed4153c4f44f1618e18857c610d0b332d636970fd8a980af7ae3fbff84b9f1da53aa2f45d8d305827ea88992195cd5643027
+          osx-64: sha512:0fd31dab707f4c143a382474b93f872c2d1c3dd88fadc882e5fb5958c35c41d9ff150841efcfedf2b4eff0a9af8d76b2ad672df98572f9c10d58b4be2303e8c5
   tasks:
     - name: ensure sdk executable is in fact executable
       command: /usr/local/bin/dotnet --info

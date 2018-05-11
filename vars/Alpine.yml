@@ -1,9 +1,0 @@
----
-dotnet_deps:
-  - libunwind
-  - lttng-ust
-  - libcurl
-  - openssl
-  - krb5-libs
-  - zlib
-  - icu-libs
