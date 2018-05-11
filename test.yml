@@ -2,8 +2,33 @@
 - hosts: all
   roles:
     - role: '{{playbook_dir}}'
+      dotnet_install_type: runtime
+      dotnet_ver: '2.0.0'
+      dotnet_subdir: '5/F/0/5F0362BD-7D0A-4A9D-9BF9-022C6B15B04D'
+      dotnet_checksums:
+        # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.0.0-runtime-sha.txt
+        '2.0.0':
+          linux-x64: sha256:69ecad24bce4f2132e0db616b49e2c35487d13e3c379dabc3ec860662467b714
+          osx-x64: sha256:b92e6cff9e4f40d4d5126d0896d632951bc9a339dbc7b032098bf5ab76d571a0
   tasks:
-    - name: ensure executable is executable
+    - name: ensure runtime executable is in fact executable
+      command: /usr/local/bin/dotnet --info
+      register: dotnet_observed_version
+    - debug:
+        var: dotnet_observed_version.stdout_lines
+- hosts: all
+  roles:
+    - role: '{{playbook_dir}}'
+      dotnet_install_type: runtime
+      dotnet_ver: '2.0.0'
+      dotnet_subdir: '1/B/4/1B4DE605-8378-47A5-B01B-2C79D6C55519'
+      dotnet_checksums:
+        # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.0.0-sdk-sha.txt
+        '2.0.0':
+          linux-x64: sha256:6059a6f72fb7aa6205ef4b52583e9c041fd128e768870a0fc4a33ed84c98ca6b
+          osx-64: sha256:6e87270e72b5a02ea4e3c4b2266d079366e0e55d6892f9dad5f64dee3f8a341b
+  tasks:
+    - name: ensure sdk executable is in fact executable
       command: /usr/local/bin/dotnet --info
       register: dotnet_observed_version
     - debug:
