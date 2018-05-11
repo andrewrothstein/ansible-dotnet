@@ -7,7 +7,8 @@ dotnet_platform: linux-x64
 # runtime example
 #dotnet_install_type: runtime
 #dotnet_ver: '2.0.0'
-#dotnet_subdir: '5/F/0/5F0362BD-7D0A-4A9D-9BF9-022C6B15B04D'
+#dotnet_subdirs:
+#  '2.0.0': '5/F/0/5F0362BD-7D0A-4A9D-9BF9-022C6B15B04D'
 #dotnet_checksums:
 #  # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.0.0-runtime-sha.txt
 #  '2.0.0':
@@ -17,7 +18,8 @@ dotnet_platform: linux-x64
 # sdk example
 #dotnet_install_type: runtime
 #dotnet_ver: '2.0.0'
-#dotnet_subdir: '1/B/4/1B4DE605-8378-47A5-B01B-2C79D6C55519'
+#dotnet_subdirs:
+#  '2.0.0': '1/B/4/1B4DE605-8378-47A5-B01B-2C79D6C55519'
 #dotnet_checksums:
 #  # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.0.0-sdk-sha.txt
 #  '2.0.0':
