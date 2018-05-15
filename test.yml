@@ -2,24 +2,6 @@
 - hosts: all
   roles:
     - role: '{{playbook_dir}}'
-      dotnet_install_type: runtime
-      dotnet_ver: '2.0.0'
-      dotnet_subdirs:
-        '2.0.0': '5/F/0/5F0362BD-7D0A-4A9D-9BF9-022C6B15B04D'
-      dotnet_checksums:
-        # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.0.0-runtime-sha.txt
-        '2.0.0':
-          linux-x64: sha256:69ecad24bce4f2132e0db616b49e2c35487d13e3c379dabc3ec860662467b714
-          osx-x64: sha256:b92e6cff9e4f40d4d5126d0896d632951bc9a339dbc7b032098bf5ab76d571a0
-  tasks:
-    - name: ensure runtime executable is in fact executable
-      command: /usr/local/bin/dotnet --info
-      register: dotnet_observed_version
-    - debug:
-        var: dotnet_observed_version.stdout_lines
-- hosts: all
-  roles:
-    - role: '{{playbook_dir}}'
       dotnet_install_type: sdk
       dotnet_ver: '2.1.200'
       dotnet_subdirs:
@@ -31,7 +13,27 @@
           linux-x64: sha512:d8f6035a591b5500a8b81188d834ed4153c4f44f1618e18857c610d0b332d636970fd8a980af7ae3fbff84b9f1da53aa2f45d8d305827ea88992195cd5643027
           osx-64: sha512:0fd31dab707f4c143a382474b93f872c2d1c3dd88fadc882e5fb5958c35c41d9ff150841efcfedf2b4eff0a9af8d76b2ad672df98572f9c10d58b4be2303e8c5
   tasks:
+    - name: one time setup..
+      command: /usr/local/bin/dotnet new
     - name: ensure sdk executable is in fact executable
+      command: /usr/local/bin/dotnet --info
+      register: dotnet_observed_version
+    - debug:
+        var: dotnet_observed_version.stdout_lines
+- hosts: all
+  roles:
+    - role: '{{playbook_dir}}'
+      dotnet_install_type: runtime
+      dotnet_ver: '2.0.0'
+      dotnet_subdirs:
+        '2.0.0': '5/F/0/5F0362BD-7D0A-4A9D-9BF9-022C6B15B04D'
+      dotnet_checksums:
+        # https://dotnetcli.blob.core.windows.net/dotnet/checksums/2.0.0-runtime-sha.txt
+        '2.0.0':
+          linux-x64: sha256:69ecad24bce4f2132e0db616b49e2c35487d13e3c379dabc3ec860662467b714
+          osx-x64: sha256:b92e6cff9e4f40d4d5126d0896d632951bc9a339dbc7b032098bf5ab76d571a0
+  tasks:
+    - name: ensure runtime executable is in fact executable
       command: /usr/local/bin/dotnet --info
       register: dotnet_observed_version
     - debug:

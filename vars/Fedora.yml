@@ -1,0 +1,10 @@
+---
+dotnet_deps:
+  - libunwind
+  - lttng-ust
+  - libcurl
+  - '{% if ansible_distribution_version|int >= 26 %}compat-openssl10{% else %}openssl-libs{% endif %}'
+  - libuuid
+  - krb5-libs
+  - libicu
+  - zlib
