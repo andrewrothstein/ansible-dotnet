@@ -60,4 +60,3 @@
     src: '{{dotnet_install_dir}}/dotnet'
     dest: '{{dotnet_install_parent_dir}}/bin/dotnet'
     state: link
-
