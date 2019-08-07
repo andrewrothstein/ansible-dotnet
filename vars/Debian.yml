@@ -3,8 +3,8 @@ dotnet_deps:
   - libunwind8
   - liblttng-ust0
   - libcurl3
-  - libssl{% if ansible_distribution_major_version == '8' %}1.0.0{% else %}1.0.2{% endif %}
+  - libssl-dev
   - libuuid1
   - libkrb5support0
   - zlib1g
-  - libicu{% if ansible_distribution_major_version == '8' %}52{% else %}57{% endif %}
+  - libicu-dev
