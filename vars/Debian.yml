@@ -2,7 +2,7 @@
 dotnet_deps:
   - libunwind8
   - liblttng-ust0
-  - libcurl3
+  - libcurl{% if ansible_distribution_version | int >= 10 %}4{% else %}3{% endif %}
   - libssl-dev
   - libuuid1
   - libkrb5support0

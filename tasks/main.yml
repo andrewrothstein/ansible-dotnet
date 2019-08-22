@@ -1,25 +1,24 @@
 ---
 - name: resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 - name: install dep pkgs
   become: yes
   become_user: root
-  with_items: '{{dotnet_deps}}'
   package:
-    name: '{{item}}'
+    name: '{{ dotnet_deps }}'
     state: present
 - name: check for dotnet installation..
   become: yes
   stat:
-    path: '{{dotnet_install_dir}}'
+    path: '{{ dotnet_install_dir }}'
   changed_when: false
   register: dotnet_binary_dir
 - when: not dotnet_binary_dir.stat.exists
@@ -28,35 +27,35 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{dotnet_tgz_url}}'
-        dest: /tmp/{{dotnet_tgz}}
+        url: '{{ dotnet_tgz_url }}'
+        dest: /tmp/{{ dotnet_tgz }}
         mode: 0644
     - name: mkdir...
       become: yes
       become_user: root
       file:
-        path: '{{dotnet_install_dir}}'
+        path: '{{ dotnet_install_dir }}'
         state: directory
         mode: 0755
     - name: unarchive...
       become: yes
       become_user: root
       unarchive:
-        src: /tmp/{{dotnet_tgz}}
-        dest: '{{dotnet_install_dir}}'
+        src: /tmp/{{ dotnet_tgz }}
+        dest: '{{ dotnet_install_dir }}'
         remote_src: yes
-        creates: '{{dotnet_install_dir}}/dotnet'
+        creates: '{{ dotnet_install_dir }}/dotnet'
   always:
     - name: delete tgz...
       become: yes
       become_user: root
       file:
-        path: /tmp/{{dotnet_tgz}}
+        path: /tmp/{{ dotnet_tgz }}
         state: absent
 - name: link executable...
   become: yes
   become_user: root
   file:
-    src: '{{dotnet_install_dir}}/dotnet'
-    dest: '{{dotnet_install_parent_dir}}/bin/dotnet'
+    src: '{{ dotnet_install_dir }}/dotnet'
+    dest: '{{ dotnet_install_parent_dir }}/bin/dotnet'
     state: link
