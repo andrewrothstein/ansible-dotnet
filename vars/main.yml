@@ -1,5 +1,6 @@
 ---
 # vars file for dotnet
+dotnet_platform: '{{ dotnet_os }}-{{ dotnet_arch }}'
 dotnet_tgz: dotnet-{{dotnet_install_type}}-{{dotnet_ver}}-{{dotnet_platform}}.tar.gz
 
 dotnet_install_dir: '{{dotnet_install_parent_dir}}/dotnet/{{dotnet_install_type}}/{{dotnet_ver}}'

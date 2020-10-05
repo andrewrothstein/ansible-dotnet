@@ -30,6 +30,7 @@
         url: '{{ dotnet_tgz_url }}'
         dest: /tmp/{{ dotnet_tgz }}
         mode: 0644
+        checksum: '{{ dotnet_checksums[dotnet_ver][dotnet_platform] }}'
     - name: mkdir...
       become: yes
       become_user: root

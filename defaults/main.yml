@@ -1,8 +1,8 @@
 ---
 # defaults file for dotnet
 dotnet_mirror: https://download.microsoft.com/download
-
-dotnet_platform: linux-x64
+dotnet_os: linux
+dotnet_arch: x64
 
 # runtime example
 #dotnet_install_type: runtime

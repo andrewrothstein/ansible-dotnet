@@ -1,0 +1,7 @@
+---
+dotnet_deps:
+  - krb5-libs
+  - libicu
+  - openssl-libs
+  # Runtime environment's OpenSSL v1.1+
+  - compat-openssl10
