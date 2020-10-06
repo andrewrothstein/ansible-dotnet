@@ -1,6 +1,6 @@
 ---
 # defaults file for dotnet
-dotnet_mirror: https://download.microsoft.com/download
+dotnet_mirror: https://download.visualstudio.microsoft.com/download
 dotnet_os: linux
 dotnet_arch: x64
 
