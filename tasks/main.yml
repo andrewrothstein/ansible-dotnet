@@ -53,7 +53,7 @@
       file:
         path: '{{ dotnet_tmp_tgz }}'
         state: absent
-- name: linking {{ dotnet_fq_link }} to {{ donet_fq_exe }}...
+- name: linking {{ dotnet_fq_link }} to {{ dotnet_fq_exe }}...
   become: yes
   become_user: root
   file:

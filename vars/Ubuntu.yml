@@ -1,10 +1,22 @@
 ---
+dotnet_libicu:
+  xenial: '52'
+  bionic: '60'
+  focal: '66'
+dotnet_libcurl:
+  xenial: '3'
+  bionic: '4'
+  focal: '4'
+dotnet_libssl:
+  xenial: '1.0.0'
+  bionic: '1.1'
+  focal: '1.1'
 dotnet_deps:
   - libunwind8
   - liblttng-ust0
-  - libcurl3
-  - libssl1.0.0
+  - libcurl{{ dotnet_libcurl[ansible_distribution_release] }}
+  - libssl{{ dotnet_libssl[ansible_distribution_release] }}
   - libuuid1
   - libkrb5support0
   - zlib1g
-  - libicu{% if ansible_distribution_major_version == "14" %}52{% elif ansible_distribution_major_version == "16" %}55{% else %}57{% endif %}
+  - libicu{{ dotnet_libicu[ansible_distribution_release] }}
