@@ -15,7 +15,7 @@
   package:
     name: '{{ dotnet_deps }}'
     state: present
-- name: check for dotnet installation..
+- name: checking for dotnet installation in {{ dotnet_install_dir }}...
   become: yes
   stat:
     path: '{{ dotnet_install_dir }}'
@@ -23,40 +23,40 @@
   register: dotnet_binary_dir
 - when: not dotnet_binary_dir.stat.exists
   block:
-    - name: download tgz...
+    - name: download {{ dotnet_tgz_url }}...
       become: yes
       become_user: root
       get_url:
         url: '{{ dotnet_tgz_url }}'
-        dest: /tmp/{{ dotnet_tgz }}
+        dest: '{{ dotnet_tmp_tgz }}'
         mode: 0644
         checksum: '{{ dotnet_checksum }}'
-    - name: mkdir...
+    - name: mkdir {{ dotnet_install_dir }}
       become: yes
       become_user: root
       file:
         path: '{{ dotnet_install_dir }}'
         state: directory
         mode: 0755
-    - name: unarchive...
+    - name: unarchiving {{ dotnet_tmp_tgz }} into {{ dotnet_install_dir }}...
       become: yes
       become_user: root
       unarchive:
-        src: /tmp/{{ dotnet_tgz }}
-        dest: '{{ dotnet_install_dir }}'
         remote_src: yes
-        creates: '{{ dotnet_install_dir }}/dotnet'
+        src: '{{ dotnet_tmp_tgz }}'
+        dest: '{{ dotnet_install_dir }}'
+        creates: '{{ dotnet_fq_exe }}'
   always:
     - name: delete tgz...
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ dotnet_tgz }}
+        path: '{{ dotnet_tmp_tgz }}'
         state: absent
-- name: link executable...
+- name: linking {{ dotnet_fq_link }} to {{ donet_fq_exe }}...
   become: yes
   become_user: root
   file:
-    src: '{{ dotnet_install_dir }}/dotnet'
-    dest: '{{ dotnet_install_parent_dir }}/bin/dotnet'
+    src: '{{ dotnet_fq_exe }}'
+    dest: '{{ dotnet_fq_link }}'
     state: link
