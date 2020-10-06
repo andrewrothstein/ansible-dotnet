@@ -2,7 +2,7 @@ andrewrothstein.dotnet
 =========
 [![Build Status](https://travis-ci.org/andrewrothstein/ansible-dotnet.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-dotnet)
 
-Installs either .Net Core SDK or runtime
+Generic installation role for either .NET Core SDK or runtime.
 
 Requirements
 ------------
@@ -13,6 +13,16 @@ Role Variables
 --------------
 
 See [defaults/main.yml](defaults/main.yml)
+
+Definition Structure:
+```yml
+dotnet_install_type: {{ sdk | runtime }}
+dotnet_ver: {{ target_semver }}
+dotnet_subdirs:
+ '{{ dotnet_platform }}': '{{ dotnet_subdir }}'
+dotnet_checksums:
+ '{{ dotnet_platform }}': '{{ dotnet_checksum }}'
+```
 
 Dependencies
 ------------

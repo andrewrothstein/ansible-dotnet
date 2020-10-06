@@ -1,0 +1,5 @@
+---
+dotnet_deps:
+  - krb5-libs
+  - libicu
+  - openssl-libs
