@@ -33,6 +33,6 @@ galaxy_info:
     - 32
   - name: Ubuntu
     versions:
-    - buster
+    - bionic
     - focal
     - xenial
