@@ -5,6 +5,7 @@ dotnet_deps:
   - krb5-libs
   - libgcc
   - libintl
-  - libssl1.1
+  - libssl{% if ansible_distribution_version is version('3.9', operator='>=') %}1.1{% else %}1.0{% endif %}
   - libstdc++
   - zlib
+  
