@@ -1,8 +1,8 @@
 dependencies:
 - role: andrewrothstein.unarchive-deps
-  version: v1.1.2
+  version: v1.1.5
 - role: andrewrothstein.epel
-  version: v1.0.8
+  version: v1.1.0
 galaxy_info:
   author: Andrew Rothstein
   company: BlueMountain Capital
