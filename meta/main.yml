@@ -1,7 +1,6 @@
 ---
 dependencies:
 - andrewrothstein.unarchive-deps
-- andrewrothstein.epel
 galaxy_info:
   author: Andrew Rothstein
   company: BlueMountain Capital
@@ -22,13 +21,6 @@ galaxy_info:
     versions:
     - bullseye
     - buster
-  - name: EL
-    versions:
-    - 8
-  - name: Fedora
-    versions:
-    - 35
-    - 36
   - name: Ubuntu
     versions:
     - bionic
