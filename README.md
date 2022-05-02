@@ -1,6 +1,6 @@
 andrewrothstein.dotnet
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-dotnet.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-dotnet)
+![Build Status](https://github.com/andrewrothstein/ansible-dotnet/actions/workflows/build.yml/badge.svg)
 
 Generic installation role for either .NET Core SDK or runtime.
 
