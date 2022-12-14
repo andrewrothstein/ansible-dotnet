@@ -3,14 +3,17 @@ dotnet_libicu:
   xenial: '55'
   bionic: '60'
   focal: '66'
+  jammy: '70'
 dotnet_libcurl:
   xenial: '3'
   bionic: '4'
   focal: '4'
+  jammy: '4'
 dotnet_libssl:
   xenial: '1.0.0'
   bionic: '1.1'
   focal: '1.1'
+  jammy: '3'
 dotnet_deps:
   - libunwind8
   - liblttng-ust0
