@@ -1,4 +1,6 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
 - name: resolve platform specific vars
   include_vars: '{{ item }}'
   with_first_found:
@@ -24,7 +26,7 @@
 - when: not dotnet_binary_dir.stat.exists
   block:
     - name: download {{ dotnet_tgz_url }}...
-      become: yes
+      become: true
       become_user: root
       get_url:
         url: '{{ dotnet_tgz_url }}'
@@ -32,29 +34,29 @@
         mode: 0644
         checksum: '{{ dotnet_checksum }}'
     - name: mkdir {{ dotnet_install_dir }}
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ dotnet_install_dir }}'
         state: directory
         mode: 0755
     - name: unarchiving {{ dotnet_tmp_tgz }} into {{ dotnet_install_dir }}...
-      become: yes
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
+        remote_src: true
         src: '{{ dotnet_tmp_tgz }}'
         dest: '{{ dotnet_install_dir }}'
         creates: '{{ dotnet_fq_exe }}'
   always:
     - name: delete tgz...
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ dotnet_tmp_tgz }}'
         state: absent
 - name: linking {{ dotnet_fq_link }} to {{ dotnet_fq_exe }}...
-  become: yes
+  become: true
   become_user: root
   file:
     src: '{{ dotnet_fq_exe }}'

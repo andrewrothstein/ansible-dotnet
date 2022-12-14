@@ -1,6 +1,4 @@
 ---
-dependencies:
-- andrewrothstein.unarchive-deps
 galaxy_info:
   author: Andrew Rothstein
   company: BlueMountain Capital
@@ -22,3 +20,4 @@ galaxy_info:
     versions:
     - bionic
     - focal
+    - jammy

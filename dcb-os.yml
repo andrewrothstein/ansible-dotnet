@@ -1,8 +1,9 @@
 ---
-- alpine_3.14
-- alpine_3.15
+- alpine_3.16
+- alpine_3.17
 - alpine_edge
 - debian_bullseye
 - debian_buster
 - ubuntu_bionic
 - ubuntu_focal
+- ubuntu_jammy
