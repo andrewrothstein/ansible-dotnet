@@ -1,6 +1,8 @@
 ---
 - include_role:
     name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.dotnet_deps
 - name: resolve platform specific vars
   include_vars: '{{ item }}'
   with_first_found:
@@ -11,14 +13,8 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: install dep pkgs
-  become: yes
-  become_user: root
-  package:
-    name: '{{ dotnet_deps }}'
-    state: present
 - name: checking for dotnet installation in {{ dotnet_install_dir }}...
-  become: yes
+  become: true
   stat:
     path: '{{ dotnet_install_dir }}'
   changed_when: false

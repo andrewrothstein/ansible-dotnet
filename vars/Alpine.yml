@@ -1,10 +1,2 @@
 ---
 dotnet_os: linux-musl
-dotnet_deps:
-  - icu-libs
-  - krb5-libs
-  - libgcc
-  - libintl
-  - libssl{% if ansible_distribution_version is version('3.9', operator='>=') %}1.1{% else %}1.0{% endif %}
-  - libstdc++
-  - zlib
