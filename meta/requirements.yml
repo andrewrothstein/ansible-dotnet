@@ -2,4 +2,4 @@
 - name: andrewrothstein.unarchive-deps
   version: v1.2.4
 - name: andrewrothstein.dotnet_deps
-  version: 1.0.1
+  version: 1.1.0
